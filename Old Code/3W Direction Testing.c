@@ -12,7 +12,7 @@
 task main()
 {
 
-	Testing
+	//Testing
 	if (vexRT[Btn7D] == 1){
 		motor[backMotor]= vexRT[Ch1];
 	}
