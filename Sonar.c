@@ -1,3 +1,4 @@
+#pragma config(Sensor, in2,    Light,          sensorReflection)
 #pragma config(Sensor, dgtl2,  Sonar,          sensorSONAR_cm)
 #pragma config(Motor,  port2,           FrontRight,    tmotorVex393_MC29, openLoop, driveRight)
 #pragma config(Motor,  port5,           FrontLeft,     tmotorVex393_MC29, openLoop, driveLeft)
