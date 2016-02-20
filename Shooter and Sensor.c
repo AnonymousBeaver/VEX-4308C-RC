@@ -16,6 +16,7 @@
 //Declare variables
 //int lightVal = 0;
 int sonarVal = 0;
+int encoderVal = 0;
 int axis1 = 0;
 int axis2 = 0;
 int axis3 = 0;
@@ -36,7 +37,8 @@ task sensors()
 		sonarVal = sonarVal/50;
 		//lightVal = lightVal/50;
 		//Don't hog CPU
-		wait1Msec(25);
+		encoderValue = SensorValue[MotorEncoder];
+		wait1Msec(10);
 	}
 }
 
@@ -49,7 +51,7 @@ task joystick()
 		axis3 = vexRT[Ch3];
 		axis4 = vexRT[Ch4];
 		//Don't hog CPU
-		wait1Msec(25);
+		wait1Msec(10);
 	}
 }
 
@@ -75,7 +77,7 @@ task shooter()
 			motor[Shootermotor2] = speed;
 			motor[Shootermotor3] = speed;
 			motor[Shootermotor4] = speed;
-			wait1Msec(25);
+			wait1Msec(10);
 		}
 	}
 }
@@ -88,7 +90,7 @@ task driving()
 		motor[FrontRight] = axis4 - axis3;
 		motor[RearLeft] = axis4 + axis3;
 		motor[RearRight] = axis4 - axis3;
-		wait1Msec(25);
+		wait1Msec(10);
 	}
 }
 
@@ -96,18 +98,39 @@ task intake()
 {
 	while (true){
 		//Forwards
-		if (vexRT[Btn7U == true]) {
-			motor[IntakeMotor] = 80;
+		if (vexRT[Btn8U == true]) {
+			motor[IntakeMotor] = 127;
 		}
 		//Backwards
-		else if (vexRT[Btn7D == true]) {
-			motor[IntakeMotor] = -80;
+		else if (vexRT[Btn8D == true]) {
+			motor[IntakeMotor] = -127;
 		}
 		//Stop the motor otherwise
-		else {
+		else if (vexRT[Btn8L == true]) {
 			motor[IntakeMotor] = 0;
 		}
-		wait1Msec(25);
+		wait1Msec(10);
+	}
+}
+
+task intakeShoot ()
+{
+	while(true)
+	{
+		if (vexRT[Btn7D] == 1) {
+			motor[ShooterMotor1]= 80;
+			motor[ShooterMotor2]= 80;
+			motor[ShooterMotor3]= 80;
+			motor[ShooterMotor4]= 80;
+			motor[Intake]= 127;
+		}
+		else if (vexRT[Btn7D] == 0) {
+			motor[ShooterMotor1]= 0;
+			motor[ShooterMotor2]= 0;
+			motor[ShooterMotor3]= 0;
+			motor[ShooterMotor4]= 0;
+			motor[Intake]= 0;
+		}
 	}
 }
 
@@ -119,5 +142,6 @@ task main()
 		startTask(intake);
 		startTask(shooter);
 		startTask(driving);
+		startTask(intakeShoot)
 	}
 }

@@ -246,17 +246,17 @@ task shooterControl()
 	{
 		if (vexRT[Btn6D] ==1)
 		{
-			motor[ShooterMotor1]= -80;
-			motor[ShooterMotor2]= -80;
-			motor[ShooterMotor3]= -80;
-			motor[ShooterMotor4]= -80;
+			motor[ShooterMotor1]= -90;
+			motor[ShooterMotor2]= -90;
+			motor[ShooterMotor3]= -90;
+			motor[ShooterMotor4]= -90;
 		}
 		else  if (vexRT[Btn6U] ==1)
 		{
-			motor[ShooterMotor1]= 80;
-			motor[ShooterMotor2]= 80;
-			motor[ShooterMotor3]= 80;
-			motor[ShooterMotor4]= 80;
+			motor[ShooterMotor1]= 90;
+			motor[ShooterMotor2]= 90;
+			motor[ShooterMotor3]= 90;
+			motor[ShooterMotor4]= 90;
 		}
 		else
 		{
@@ -279,11 +279,6 @@ task IntakeProc()
 		{
 			if (vexRT[Btn8U] ==1)
 
-			motor(Intake)= -127;
-		}
-		{
-			if (vexRT[Btn8L] ==1)
-
 			motor(Intake)= 0;
 		}
 		wait1Msec(10);
@@ -297,10 +292,10 @@ task IntakeShoot ()
 	{
 		if (vexRT[Btn7D] ==1)
 		{
-			motor[ShooterMotor1]= 70;
-			motor[ShooterMotor2]= 70;
-			motor[ShooterMotor3]= 70;
-			motor[ShooterMotor4]= 70;
+			motor[ShooterMotor1]= 90;
+			motor[ShooterMotor2]= 90;
+			motor[ShooterMotor3]= 90;
+			motor[ShooterMotor4]= 90;
 			motor(Intake)= 127;
 		}
 		if (vexRT[Btn7U] ==1)
